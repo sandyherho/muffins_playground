@@ -40,6 +40,6 @@ colors["Control"] = "#048191"
 
 fig, ax = plt.subplots(figsize=(20, 10))
 bx = sns.boxplot(data=df, palette=colors)
-ax.set_xlabel("Atlantic Streamfunction [Sv]", size=20)
-ax.set_ylabel("Freshwater hosing [Sv]", size=20)
+ax.set_xlabel("Atlantic Streamfunction [PSU kg^[-1] yr^[-1]]", size=20)
+ax.set_ylabel("Freshwater hosing [PSU kg^[-1] yr^[-1]]", size=20)
 plt.savefig("../figs/amoc_dist.png", dpi=300)

@@ -36,7 +36,7 @@ colorbar_levels = np.arange(-7, 7)
 for scenario, hosing in scenarios:
     ds = xr.open_dataset(f"../{scenario}/fields_biogem_2d.nc")
     amoc_anom = ds["phys_opsia"].mean(dim="time") - stream_control
-    
+
     # Create the plot
     plt.fill_between(amoc_anom["lat_moc"], amoc_anom["zt_moc"].min(), amoc_anom["zt_moc"].max(), color='#695447')
     contour_filled = plt.contourf(amoc_anom["lat_moc"], amoc_anom["zt_moc"], amoc_anom, levels=colorbar_levels, cmap="RdBu_r")
@@ -45,12 +45,12 @@ for scenario, hosing in scenarios:
     plt.xlabel("Latitude [°]")
     plt.ylabel("Depth [m]")
     cbar = plt.colorbar(contour_filled)
-    cbar.set_label("Anomaly [Sv]")
+    cbar.set_label("Anomaly [PSU kg^[-1] yr^[-1]")
     plt.clabel(contour_lines, inline=True, fontsize=10, fmt='%1.1f')
     plt.gca().invert_yaxis()
-    
-    plt.title(f"AMOC $Ψ$ anomaly under {scenario} $Sv$ freshwater hosing")
-    
+
+    plt.title(f"AMOC $Ψ$ anomaly under {scenario} PSU kg^[-1] yr^[-1] freshwater hosing")
+
     # Save the plot
     plt.savefig(f"../figs/amoc_{scenario}.png", dpi=300)
     plt.clf()  # Clear the current plot for the next iteration
